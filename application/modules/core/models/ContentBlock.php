@@ -19,7 +19,8 @@ use Yii;
  */
 class ContentBlock extends \yii\db\ActiveRecord
 {
-
+    const SCENARIO_SEARCH = 'search';
+    
     /**
      * @var null|string
      */
@@ -30,7 +31,7 @@ class ContentBlock extends \yii\db\ActiveRecord
      */
     public static function tableName()
     {
-        return 'content_block';
+        return '{{%content_block}}';
     }
 
     /**
@@ -44,7 +45,8 @@ class ContentBlock extends \yii\db\ActiveRecord
             [['key'], 'unique'],
             [['group_id'], 'default', 'value' => 1],
             [['name', 'key'], 'string', 'max' => 255],
-            [['newGroup'], 'safe']
+            [['newGroup'], 'safe'],
+            [['name', 'key', 'preload'], 'safe', 'on' => 'search']
         ];
     }
 
