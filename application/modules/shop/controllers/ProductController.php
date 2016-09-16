@@ -356,6 +356,7 @@ class ProductController extends Controller
                 $model->searchProductsByDescription(),
                 $model->searchProductsByProperty()
             );
+            $ids = array_unique($ids);
             Yii::$app->cache->set(
                 $cacheKey,
                 $ids,
